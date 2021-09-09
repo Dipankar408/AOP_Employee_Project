@@ -28,7 +28,7 @@
   </form>
   
   <calendar name="project-task-calendar" model="com.axelor.project.db.ProjectTask" eventStart="startDate" 
-  eventStop="endDate" eventLength="1" title="Tasks">
+  eventStop="endDate" eventLength="1" title="Tasks" colorBy="project">
   	<field name="name"/>
   </calendar>
   
@@ -46,7 +46,7 @@
   	</node>
   </tree>
   
-  <kanban columnBy="state" model="com.axelor.project.db.ProjectTask" sequenceBy="priority" title="Tasks" name="project-task-kanban">
+  <kanban columnBy="state" model="com.axelor.project.db.ProjectTask" sequenceBy="priority" title="Tasks" name="project-task-kanban" onNew="project.task.kanban.on.new">
   	<field name="name"/>
   	<field name="startDate"/>
   	<field name="deadLine"/>
@@ -62,6 +62,14 @@
   		]]>
   	</template>
   </kanban>
+  
+  <action-record name="project.task.kanban.on.new" model="com.axelor.project.db.ProjectTask">
+  			<field name="name" expr="#{_value}"/>
+  			<field name="priority" expr="0"/>
+  			<field name="createDate" expr="#{__time__}"/>
+  			<field name="startDate" expr="#{__time__}"/>
+  			<field name="endDate" expr="#{__time__.plusHours(1)}"/>
+  </action-record>
   
   
   <action-view name="project.open.projects" title="Projects" model="com.axelor.project.db.Project">
