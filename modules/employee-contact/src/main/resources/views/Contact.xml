@@ -51,7 +51,6 @@
   				<h4>Company:-{{company.name}}</h4>
   				<h4>Adhar No:-{{adhar.adhar}}</h4>
   				<h4 ng-repeat="adr in address;">
-  					{{adr.id}}
   					Address:-{{address.city}},{{address.state}}	,{{address.country.name}},{{address.zip}}
   				</h4>
   			</div
