@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<object-views xmlns="http://axelor.com/xml/ns/object-views" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://axelor.com/xml/ns/object-views http://axelor.com/xml/ns/object-views/object-views_5.4.xsd">
+  
+  <menuitem title="Project Menu" name="menu-project" order="-101" icon-background="green"/>
+  
+  <menuitem title="All Projects" name="menu-all-projects" parent="menu-project" action="project.all"/>
+  
+  <action-view name="project.all" title="All Projects" model="com.axelor.project.db.Project">
+  	<view type="grid" name="project-grid"/>
+  	<view type="form" name="project-form"/>
+  </action-view>
+  
+  <menuitem title="All Tasks" name="menu-tasks" parent="menu-project" action="task.all"/>
+  
+  <action-view name="task.all" title="All Tasks" model="com.axelor.project.db.ProjectTask">
+  	<view type="grid" name="project-task-grid"/>
+  	<view type="form" name="project-task-form"/>
+  </action-view>
+  
+  <menuitem title="Project Tree" name="menu-task-tree" parent="menu-project" action="project.task.tree"/>
+  
+  <action-view name="project.task.tree" title="Project Tree" model="com.axelor.project.db.ProjectTask">
+  	<view type="tree" name="project-task-tree"/>
+  </action-view>
+  
+  <menuitem title="Tasks Status" name="menu-task-kanban" parent="menu-project" action="project.task.kanban"/>
+  
+  <action-view name="project.task.kanban" title="Tasks Status" model="com.axelor.project.db.ProjectTask">
+  	<view type="kanban" name="project-task-kanban"/>
+  </action-view>
+  
+  </object-views>

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<object-views xmlns="http://axelor.com/xml/ns/object-views" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://axelor.com/xml/ns/object-views http://axelor.com/xml/ns/object-views/object-views_5.4.xsd">
+  
+  <selection name="project.task.select.state">
+  	<option value="to-do">To_Do</option>
+  	<option value="progress">Progress</option>
+  	<option value="complete">Complete</option>
+  </selection>
+  
+  <grid model="com.axelor.project.db.ProjectTask" title="Tasks" name="project-task-grid">
+  	<field name="name"/>
+  	<field name="state"/>
+  	<field name="deadLine"/>
+  </grid>
+  
+  <form model="com.axelor.project.db.ProjectTask" title="Tasks" name="project-task-form">
+  	<panel title="Task Details">
+  			<field name="name"/>
+  			<field name="state"/>
+  			<field name="priority"/>
+  			<field name="createDate"/>
+  			<field name="startDate"/>
+  			<field name="endDate"/>
+  			<field name="deadLine"/>
+  			<field name="project"/>
+  	</panel>
+  </form>
+  
+  <calendar name="project-task-calendar" model="com.axelor.project.db.ProjectTask" eventStart="startDate" 
+  eventStop="endDate" eventLength="1" title="Tasks">
+  	<field name="name"/>
+  </calendar>
+  
+  <tree name="project-task-tree" title="Tasks">
+  	<column name="title" type="string"/>
+  	<column name="state" type="string"/>
+  	
+  	<node model="com.axelor.project.db.Project" onClick="project.open.projects">
+  		<field name="name" as="title"/>
+  	</node>
+  	
+  	<node model="com.axelor.project.db.ProjectTask" onClick="project.open.tasks" parent="project">
+  		<field name="name" as="title"/>
+  		<field name="state" as="state"/>
+  	</node>
+  </tree>
+  
+  <kanban columnBy="state" model="com.axelor.project.db.ProjectTask" sequenceBy="priority" title="Tasks" name="project-task-kanban">
+  	<field name="name"/>
+  	<field name="startDate"/>
+  	<field name="deadLine"/>
+  	<field name="project"/>
+  	<template>
+  		<![CDATA[
+  			<div style="color:orange; text-align:center;">
+  				<h3>{{name}}<h3>
+  				<h4>Start Date:-{{startDate}}<h4>
+  				<h4>Dead Line:-{{deadLine}}</h4>
+  				<h4>Project Name:-{{project.name}}</h4>
+  			</div> 
+  		]]>
+  	</template>
+  </kanban>
+  
+  
+  <action-view name="project.open.projects" title="Projects" model="com.axelor.project.db.Project">
+  	<view type="grid" name="project-grid"/>
+  	<view type="form" name="project-form"/>
+  	<domain>self.id=:project_id</domain>
+  	<context name="project_id" expr="eval:id"/>
+  	<context name="_showSingle" expr="true"/>
+  </action-view>
+  
+  <action-view name="project.open.tasks" title="Projects" model="com.axelor.project.db.ProjectTask">
+  	<view type="grid" name="project-task-grid"/>
+  	<view type="form" name="project-task-form"/>
+  	<domain>self.id=:task_id</domain>
+  	<context name="task_id" expr="eval:id"/>
+  	<context name="_showSingle" expr="true"/>
+  </action-view>
+  
+  
+  </object-views>

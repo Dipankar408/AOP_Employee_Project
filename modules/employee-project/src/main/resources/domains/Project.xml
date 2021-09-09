@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<domain-models xmlns="http://axelor.com/xml/ns/domain-models"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://axelor.com/xml/ns/domain-models http://axelor.com/xml/ns/domain-models/domain-models_5.4.xsd">
+  
+  <module package="com.axelor.project.db" name="project"/>
+  
+  <entity name="Project" cacheable="true">
+  	<string name="name"/>
+  	<string name="description"/>
+  	<integer name="priority"/>
+  	<many-to-one ref="Project" name="parent"/>
+  	<one-to-many ref="ProjectTask" name="tasks" mappedBy="project"/>
+  </entity>
+  
+  </domain-models>
