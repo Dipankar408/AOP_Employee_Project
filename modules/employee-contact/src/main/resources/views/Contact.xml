@@ -37,14 +37,23 @@
   	<field name="company"/>
   	<field name="adhar"/>
   	<field name="address"/>
+  	<field name="address.city" />
+  	<field name="address.state"/>
+  	<field name="address.country"/>
+  	<field name="address.zip"/>
   	<template>
   		<![CDATA[
   			<h3 style="color:skyblue; text-align:center;"><u>{{title}} {{name}}</u></h3>
   			<div style="color:blue; text-align:center;">
-  				<h4>Phone:-{{phone.phone}}</h4>
+  				<h4 ng-repeat="phn in phone;">
+  					Phone:-{{phn.phone}}
+  				</h4>
   				<h4>Company:-{{company.name}}</h4>
   				<h4>Adhar No:-{{adhar.adhar}}</h4>
-  				<h4>Address:-{{address.city}}</h4>
+  				<h4 ng-repeat="adr in address;">
+  					{{adr.id}}
+  					Address:-{{address.city}},{{address.state}}	,{{address.country.name}},{{address.zip}}
+  				</h4>
   			</div
   		]]>
   	</template>
