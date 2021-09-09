@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<object-views xmlns="http://axelor.com/xml/ns/object-views" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://axelor.com/xml/ns/object-views http://axelor.com/xml/ns/object-views/object-views_5.4.xsd">
+  
+  <menuitem title="Employee Information" name="menu-employee" icon-background="blue"/>
+  
+  <menuitem title="All Employees" name="menu-all-employee" parent="menu-employee" action="contact.all"/>
+  <action-view name="contact.all" title="All Employees" model="com.axelor.contact.db.Contact">
+  	<view type="cards" name="contact-card"/>
+  	<view type="form" name="contact-form"/>
+  </action-view>
+  
+  </object-views>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<object-views xmlns="http://axelor.com/xml/ns/object-views" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://axelor.com/xml/ns/object-views http://axelor.com/xml/ns/object-views/object-views_5.4.xsd">
+  
+  <selection name="employee.select.title">
+  	<option value="Mr.">Mr.</option>
+  	<option value="Mrs.">Mrs.</option>
+  	<option value="Miss">Miss</option>
+  	<option value="Dr.">Dr.</option>
+  </selection>
+  
+  <grid model="com.axelor.contact.db.Contact" title="Contacts" name="contact-grid">
+  	<field name="title"/>
+  	<field name="name"/>
+  	<field name="age"/>
+  </grid>
+  
+  <form model="com.axelor.contact.db.Contact" title="Contacts" name="contact-form">
+  	<panel title="Personal Information" colspan="12">
+  		<field name="title" colspan="4"/>
+  		<field name="name" colspan="4"/>
+  		<field name="age" colspan="4"/>
+  		<field name="phone" canNew="true" colspan="4"/>
+  		<field name="company" canNew="true" colspan="4"/>
+  		<field name="adhar" canNew="true" colspan="4"/>
+  	</panel>
+  	<panel title="Employee Address" colsapn="12">
+  		<field name="address" canNew="true" colsapn="12"/>
+  	</panel>	
+  </form>
+  
+  <cards name="contact-card" model="com.axelor.contact.db.Contact" title="Contacts">
+  	<field name="title"/>
+  	<field name="name"/>
+  	<field name="age"/>
+  	<field name="phone"/>
+  	<field name="company"/>
+  	<field name="adhar"/>
+  	<field name="address"/>
+  	<template>
+  		<![CDATA[
+  			<h3 style="color:skyblue; text-align:center;"><u>{{title}} {{name}}</u></h3>
+  			<div style="color:blue; text-align:center;">
+  				<h4>Phone:-{{phone.phone}}</h4>
+  				<h4>Company:-{{company.name}}</h4>
+  				<h4>Adhar No:-{{adhar.adhar}}</h4>
+  				<h4>Address:-{{address.city}}</h4>
+  			</div
+  		]]>
+  	</template>
+  </cards>  
+  </object-views>
