@@ -17,6 +17,7 @@
   
   <form model="com.axelor.contact.db.Contact" title="Contacts" name="contact-form">
   	<panel title="Personal Information" colspan="12">
+  		<field name="image" colspan="4" showTilte="false"/>
   		<field name="title" colspan="4"/>
   		<field name="name" colspan="4"/>
   		<field name="age" colspan="4"/>
@@ -36,21 +37,24 @@
   	<field name="phone"/>
   	<field name="company"/>
   	<field name="adhar"/>
+  	<field name="hasImage"/>
   	<field name="addres"/>
   	<template>
   		<![CDATA[
-  			<div style="background-color:hotpink; border:0px; border-radius:3px;"> 
-  			<h3 style="color:skyblue; text-align:center;"><u>{{title}} {{name}}</u></h3>
-  			<div style="color:white; text-align:center;">
+  			<div class="span4 card-image">
+  				<img ng-if="hasImage" ng-src="{{$image(null,'image')}}">
+  				<img ng-if="!hasImage" src="img/user.png">
+  				<strong style="color:hotpink">{{title}} {{name}}</strong>
+  			</div> 
+  			<div class="span8">
   				<h4 ng-repeat="phn in phone;">
   					Phone:-{{phn.phone}}
   				</h4>
   				<h4>Company:-{{company.name}}</h4>
   				<h4>Adhar No:-{{adhar.adhar}}</h4>
-  				<h4 ng-repeat="adr in addres;">
-  					Address:-{{adr.city}},{{adr.state}}	,{{adr.country.name}},{{adr.zip}}
+  				<h4>
+  					Address:-<span ng-repeat="adr in addres;">{{adr.city}},{{adr.state}},{{adr.country.name}},{{adr.zip}}<br>&emsp;&emsp;&emsp;</span>
   				</h4>
-  			</div>
   			</div>
   		]]>
   	</template>

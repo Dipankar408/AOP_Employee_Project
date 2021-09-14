@@ -10,6 +10,7 @@
   	<string name="title" selection="employee.select.title"/>
   	<string name="name"/>
   	<integer name="age"/>
+  	<binary name="image" title="Photo" help="MAX SIZE 4MB" image="true"/>
   	<many-to-many ref="Address" name="address"/>
   	<one-to-many ref="Phone" name="phone" mappedBy="contact"/>
   	<many-to-one ref="Company" name="company"/>

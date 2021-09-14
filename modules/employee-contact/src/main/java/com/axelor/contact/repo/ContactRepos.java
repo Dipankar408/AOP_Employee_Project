@@ -15,7 +15,6 @@ public class ContactRepos extends ContactRepository{
 	@Override
 	public Map<String,Object> populate(Map<String,Object> json,Map<String,Object> context){
 		if(!context.containsKey("json-enhance")) {
-			System.out.println("end");
 			return json;
 		}
 		
@@ -28,7 +27,7 @@ public class ContactRepos extends ContactRepository{
 			{
 				list.add(obj);
 			}
-			
+			json.put("hasImage", contact.getImage() != null);
 			json.put("addres", list);
 		}catch(Exception e)
 		{
