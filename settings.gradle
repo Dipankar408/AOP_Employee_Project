@@ -1,3 +1,4 @@
 rootProject.name="employee_aop"
 
 include "modules:employee-contact"
+include "modules:employee-project"

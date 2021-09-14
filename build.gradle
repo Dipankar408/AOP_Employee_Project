@@ -41,6 +41,7 @@ buildscript {
   dependencies {
 	// add module dependencies
 	implementation project(":modules:employee-contact")
+	implementation project(":modules:employee-project")
   }
   
   wrapper {
